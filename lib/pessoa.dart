@@ -1,4 +1,4 @@
-class Pessoa {
+abstract class Pessoa {
   String _nome ="";
   int _idade =0;
   double _peso = 0;

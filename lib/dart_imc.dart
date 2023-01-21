@@ -1,29 +1,49 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:svg';
+import 'dart_imc.dart';
 
-import 'package:dart_imc/pessoa.dart';
-import 'package:dart_imc/utilidade_console.dart';
+
 
 void runAapp() {
   print("Bem vindo à caluculadora de IMC");
-  print("Informe seu nome");
-  var line = stdin.readLineSync(encoding: utf8);
-  var nome = (line ?? "");
-  print("Informe sua idade:");
-  line = stdin.readLineSync(encoding:utf8);
-  var idade = double.parse(line ?? "");
-  print("Informe sua altura");
-  line =  stdin.readLineSync(encoding:  utf8);
-  var altura = double.parse(line ?? "");
-  print("Informe seu peso");
-  line = stdin.readLineSync(encoding: utf8);
-  var peso = double.parse(line ?? "");
+  var nome = lerConsole("Informe seu nome");
+
+  var altura = lerConsoleDouble("Informe sua altura");
+
+  var peso = lerConsoleDouble("Informe seu peso");
 
   var imc = peso /( altura*altura);
-  print("Seu nome é $nome");
-  print("Sua idade é $idade anos");
-  print("O seu imc é de $imc");
+  
 
+   
+  if (imc < 18.5) {
+    print("$nome Você está abaixo do peso com o imc de $imc}");
+  } else if (imc> 18.5 && imc <=24.9) {
+      print("$nome Você está com o peso normal para sua altura, e seu imc é $imc");
+  } else if (imc >25.0 && imc <29.9){
+      print("$nome Você está com sobrepeso, com o imc de ${imc.}");
+  } else if (imc >= 30.0 ){
+      print("$nome Você está obeso, com imc de $imc");
+  }
   
 }
 
+lerConsole(String texto){
+  print(texto);
+  var line = stdin.readLineSync(encoding: utf8);
+  return line ?? "";
+}
+
+lerConsoleDouble(String texto){
+  var numero = double.tryParse(lerConsole(texto));
+  if (numero == null) {
+    print("Erro, número inválido");
+    exit(0);
+  } else {
+    return numero;
+  }
+
+ 
+  
+}

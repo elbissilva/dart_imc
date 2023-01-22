@@ -1,20 +1,15 @@
 abstract class Pessoa {
-  String _nome ="";
-  int _idade =0;
+   String _nome ="";
   double _peso = 0;
   double _altura =0;
 
-  Pessoa(String nome, int idade, double peso, double altura){
-    nome =_nome;
-    idade = _idade;
-    peso = _peso;
-    altura = _altura;
+  Pessoa(String nome, double peso, double altura){
+    _nome=nome;
+    _peso=peso;
+    _altura=altura;
   }
   void setNome(nome){
     nome =_nome;
-  }
-  void setIdade(idade){
-    idade = _idade;
   }
   void setPeso(peso){
     peso = _peso;
@@ -25,9 +20,7 @@ abstract class Pessoa {
   String getNome(){
     return _nome.toUpperCase();
   }
-  int getIdade(){
-    return _idade;
-  }
+
   double getPeso(){
     return _peso;
   }
@@ -39,9 +32,9 @@ abstract class Pessoa {
     // TODO: implement toString
     return {
       "Nome":_nome,
-      "Idade":_idade,
       "Peso":_peso,
       "Altura":_altura,
     }.toString();
   }
+
 }

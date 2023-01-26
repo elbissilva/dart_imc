@@ -12,8 +12,9 @@ void runAapp() {
   var altura = lerConsoleDouble("Informe sua altura");
 
   var peso = lerConsoleDouble("Informe seu peso");
-  var imc =peso/(altura*altura);
-
+  
+  double imc = peso/(altura*altura);
+  
   var p1 =  Paciente(nome, peso, altura, imc);
   
   if (imc<16){
@@ -28,9 +29,9 @@ void runAapp() {
     print("$p1 acimca do peso, conciderado 'SOBREPESO'. ");
   }else if(imc <35){
     print("$p1 acima do peso, conciderado 'OBESIDADE GRU I'.");
-  } else if (imc < 40){
+  } else if (imc< 40){
     print("$p1 acima do peso, conciderado 'OBESIDADE GRAU II'.");
-  } else if(imc >= 40){
+  } else if(imc>= 40){
     print("$p1 acima do peso, conciderado 'MAGREZA GRAVE ");
   }
 
@@ -54,5 +55,9 @@ lerConsoleDouble(String texto){
   }
 
 }
-
-
+double icmCalc(double peso, double altura){
+  var imc = peso/(altura*altura);
+  imc.toStringAsFixed(2);
+  return double.parse(imc.toStringAsFixed(2));
+  
+}
